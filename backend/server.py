@@ -3720,11 +3720,9 @@ async def manual_geo_test_batch(
     tracker = ProgressTracker(session_id, len(node_ids))
     progress_store[session_id] = tracker
     
-    # Запускаем в background с правильной обработкой
-    task = asyncio.create_task(process_geo_test_background(session_id, node_ids, None))
-    _background_tasks.add(task)  # Сохраняем ссылку чтобы task не удалился
-    task.add_done_callback(_background_tasks.discard)  # Удаляем после завершения
-    logger.info(f"🚀 Created geo test background task for session {session_id}")
+    # Запускаем в background через threading (надежнее чем asyncio.create_task)
+    run_async_in_thread(process_geo_test_background(session_id, node_ids, None))
+    logger.info(f"🚀 Started geo test background thread for session {session_id}")
     
     return {
         "session_id": session_id,
