@@ -36,6 +36,7 @@ from socks_monitor import start_socks_monitoring, get_proxy_file_content, get_mo
 import uuid
 progress_store = {}
 import_progress = {}  # For chunked import progress tracking
+_background_tasks = set()  # Хранилище для background tasks чтобы они не удалялись garbage collector
 
 # Global testing concurrency controls (АГРЕССИВНО увеличено для скорости)
 MAX_PING_GLOBAL = 20   # МАКСИМАЛЬНО увеличено для скорости ping
