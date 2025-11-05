@@ -183,7 +183,7 @@ const NodesTable = ({ nodes, selectedNodes, onSelectNode, onNodeUpdated, loading
   };
 
   const copyCredentials = (node) => {
-    const credentialsFormat = `${node.ip}:${node.login}:${node.password}`;
+    const credentialsFormat = `${node.ip} ${node.login} ${node.password}`;
     copyToClipboard(credentialsFormat, 'Credentials');
   };
 
