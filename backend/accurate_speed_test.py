@@ -1,3 +1,11 @@
+"""
+⚠️ CRITICAL FILE - DO NOT DELETE! ⚠️
+Этот файл ОБЯЗАТЕЛЕН для Speed Test!
+Удаление приведет к ошибке: ModuleNotFoundError: No module named 'accurate_speed_test'
+
+Accurate Speed Testing - измеряет реальную пропускную способность PPTP туннеля
+"""
+
 import asyncio
 import socket
 import struct  
